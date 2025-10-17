@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Stochastic Interpolants for Revealing Stylistic Flows across the History of Art">
+  <meta name="keywords" content="Artistic Style Understanding, New Dataset, Flow Matching, Generative Probabilistic Models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>Stochastic Interpolants for Revealing Stylistic Flows across the History of Art</title>
+  <style>
+    .container.is-max-desktop {
+      max-width: 1300px;
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1FWSVCGZTG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-1FWSVCGZTG');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/twentytwenty.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="icon" href="static/images/radio.png">
+
+  <script src="static/js/jquery-3.2.1.min.js"></script>
+  <script src="static/js/jquery.event.move.js"></script>
+  <script src="static/js/jquery.twentytwenty.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/fontawesome.all.min.js"></script>
+
+  <!--MathJax-->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Stochastic Interpolants for Revealing Stylistic Flows across the History of Art</h1>
+          <h2 class="title is-3">ICCV 2025</h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block" style="margin-right: 10px;">Pingchuan Ma<sup>*</sup></span>
+            <span class="author-block" style="margin-right: 10px;">Ming Gui<sup>*</sup></span>
+            <span class="author-block" style="margin-right: 10px;">Johannes Schusterbauer</span>
+            <span class="author-block" style="margin-right: 10px;">Xiaopei Yang</span>
+            <span class="author-block" style="margin-right: 10px;">Olga Grebenkova</span><br>
+            <span class="author-block" style="margin-right: 10px;">Vincent Tao Hu</span>
+            <span class="author-block" style="margin-right: 10px;">Björn Ommer</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"></span><br>
+            <span class="author-block">CompVis @ LMU Munich&nbsp;&nbsp;</span><br>
+            <span class="author-block"> Munich Center for Machine Learning (MCML)</span><br>
+            *equal contribution
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://github.com/CompVis/Art-fm" target="_blank" rel="noopener noreferrer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+        <div class="content has-text-justified">
+          <p style="margin-bottom: 20px; margin-top: 10px;">
+            <span style="font-weight: bold; font-size: 1.3em;">TL;DR:</span> We model how artistic style flows over 500 years without relying on ground truth pairs.
+          </p>
+        </div>
+    </div>
+  </div>
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <figure>
+        <img id="dataset_overview" style="width: 90%; margin-left: auto; margin-right: auto; display: block;" 
+          src="static/images/dataset.png" alt=""/>
+        <figcaption class="has-text-centered">We curated a large-scale, unified dataset of 650k artworks annotated with creation year and other metadata, covering five centuries of diverse artistic styles.</figcaption>
+      </figure>
+    </div>
+  </div>
+  
+</section>
+
+<section class="section pt-0 hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <br> <h2 class="title is-3">Overview</h2>
+        <div class="content has-text-justified">
+          <p>
+            We introduce a generative framework that models the temporal evolution of artistic styles as an <b>optimal transport problem</b> in a learned style space. By combining <i>stochastic interpolants</i> with <i>diffusion implicit bridges</i>, the model aligns artistic distributions across centuries without paired data, revealing how visual styles continuously flow and transform through time.
+          </p>
+          <p>
+            Unlike existing generative models that treat artworks as isolated instances, our approach captures <b>stylistic dynamics and transitions</b> across history. It enables re-synthesis of artworks from or to any era and quantitative analysis of evolving aesthetic patterns. To support this, we also curated a <b>large-scale art dataset</b> spanning 500 years, providing a foundation for studying the evolution of artistic modes and cross-cultural influences in an unsupervised manner.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">How can we build correspondences without GT pairs?</h2>
+        <div class="content has-text-justified">
+          <figure>
+            <img id="method_2d" style="width: 80%; margin-left: auto; margin-right: auto; display: block;" 
+              src="static/images/method_2d.png" alt=""/>
+            <figcaption class="has-text-centered"></figcaption>
+          </figure>
+          <p>
+            In the above 2D example, two unconditional models are trained between Gaussian noise and data distributions $\mathcal{A}$ (squares) and $\mathcal{B}$ (circles), 
+            without access to mode labels (colors). 
+            Despite this, structure is preserved in noise space. 
+            By mapping samples from $\mathcal{A}$ to noise via $v^{(a)}$ and then back to $\mathcal{B}$ via $v^{(b)}$, 
+            we show that correspondences can emerge without paired supervision.
+          </p>
+          <figure>
+            <img id="progression_2d" style="width: 85%; margin-left: auto; margin-right: auto; display: block;" 
+              src="static/images/2d_trag.png" alt=""/>
+            <figcaption class="has-text-centered"></figcaption>
+          </figure>
+          <p>
+            This also holds when we jump between multiple intermediate distributions,
+            where trajectories show the temporal evolution of data points across different conditions (x-axis). 
+            While modes (colors) smoothly blend, the underlying optimal transport plan stays consistent. 
+            Generated samples reliably match their correct target modes without explicit supervision, 
+            demonstrating strong structural alignment. This robustness persists even when transitioning 
+            through multiple intermediate distributions, where samples may be spatially distorted but 
+            maintain accurate mode correspondence throughout the temporal progression. <br>
+            In the following, we show how this idea can be extended to model temporal flows in art.
+
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <figure>
+            <img id="method" style="width: 100%; margin-left: auto; margin-right: auto; display: block;" 
+              src="static/images/artflow.jpg" alt=""/>
+            <figcaption class="has-text-centered">Inference</figcaption>
+          </figure>
+          <p>
+            Our method trains <i>stochastic interpolants</i> to map between the <b>style embedding space</b> and structured noise, learning continuous style flows conditioned on an artwork's creation year. This temporal conditioning aligns artistic distributions across centuries, forming a coherent representation of stylistic evolution. 
+          </p>
+          <p>
+            During inference, the model performs both <b>forward and backward flows</b> to visualize and analyze how artistic styles transition over time, enabling exploration of historical context, influence, and stylistic continuity.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-0 hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3"></h2>
+          <div class="content has-text-justified">
+            <h3 class="title has-text-centered" style="font-size: 1.5em;">
+              🌊 Stylistic flows over time
+            </h3>
+            <figure>
+              <img id="dist_shift" style="width: 100%; margin-left: auto; margin-right: auto; display: block;" 
+                src="static/images/dist-shift.png" alt=""/>
+              <figcaption class="has-text-centered"></figcaption>
+            </figure>
+            <p>
+              We visualize stylistic flows for +20, +40, +80 years (starting from early 20th). Blue quivers indicate the dominant movements of art pieces into the next time frame and visualize how style distribution flows across time. 
+              For each jump, <span style="color: orange;">orange distribution</span> shows real artworks from the corresponding period; <span style="color: blue;">blue distribution</span> is the fixed late-20th-century target.  
+              Early-20th-century samples transported by our model (<span style="color: green;">green distribution</span>) first match each intermediate distribution and ultimately converge toward the target manifold.
+            </p>
+
+            <h3 class="title has-text-centered" style="font-size: 1.5em;">
+              🎨 Semantic and stylistic alignment through time, rather than 🧩 pixels
+            </h3>
+            <figure>
+              <img id="qualitative" style="width: 100%; margin-left: auto; margin-right: auto; display: block;" 
+                src="static/images/qualitative.jpg" alt=""/>
+              <figcaption class="has-text-centered"></figcaption>
+            </figure>
+            <p>
+              Qualitative comparison of editing methods across different historical styles. 
+              Each row shows results from a different method. 
+              The 1st and 5th columns show original artworks (Les Demoiselles d'Avignon - 1907 and Landscape near Chatou - 1904). 
+              We maintain better semantic alignment through time while reflecting the correct style, whereas other methods prioritize 
+              preserving the original pixels, resulting in outputs that are constrained by pixel-level fidelity rather than semantic or 
+              stylistic coherence with the target period.
+
+            </p>
+            <figure>
+              <img id="horseman" style="width: 90%; margin-left: auto; margin-right: auto; display: block;" 
+                src="static/images/horseman.png" alt=""/>
+              <figcaption class="has-text-centered"></figcaption>
+            </figure>
+            <p>
+              We transform a motorcyclist to the year <i>1800</i> with increasing flexibility (left to right, top row). 
+              Low flexibility limits stylistic adaptation. This results in hybrid outputs, 
+              such as a <i>Steam Horse locomotive</i>, that blend past and future characteristics without fully transitioning. 
+              Higher values retain semantic identity with correct stylistic traits.   
+              Compared to other methods that struggle to adapt even with higher guidance scales, instead of rigidly retaining <b>"a man on a motorcycle with wheels"</b>, 
+              our method flexibly transforms it into a <b>"man on a horse"</b> for adapting the stylistic 
+              context of the target era. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-justified">
+          <h3 class="title has-text-centered">
+            Understanding of style in specific time periods
+          </h3>
+          <figure style="text-align: center;">
+            <img id="comparison" width="90%" src="static/images/quan_tab_uncond.png" alt="Generalization to other datasets"/>
+          </figure>
+          <p>
+            We computed the FID score between the generated samples and the ground truth conditioned on the time for 1,000 samples per century.
+            We also fine-tuned SD 1.5 on our dataset with time as additional text input, allowing for more precise conditioning. 
+            Our method exhibits stronger alignment with ground truth distributions.
+          </p>
+          
+          <h3 class="title has-text-centered">
+            Measuring style flow quality without ground truth pairs
+          </h3>
+          
+          <figure style="text-align: center;">
+            <img id="comparison" width="90%" src="static/images/quan_tab_proj.png" alt="Generalization to other datasets"/>
+          </figure>
+          <p>
+            Evaluating temporal transitions in artworks is challenging without exact ground-truth pairs. We leverage the assumption that artworks created near each other in time and style tend to evolve together rather than independently. This guides our evaluation of how well the model captures realistic style evolution.
+          </p>
+          <ul>
+            <li><b>Compactness (δ):</b> Measures style coherence by comparing the variance of transformed samples to random samples from the target period. Lower δ indicates samples remain closely grouped with consistent style.</li>
+            <li><b>Triplet consistency (τ):</b> Adapted from triplet loss, this verifies if relationships among anchor, similar (positive), and different (negative) samples are preserved after transformation, reflecting local style structure preservation.</li>
+          </ul>
+          <p>
+            We sampled 100 representative artworks per style and transferred clusters to random years within ±100 years, averaging metrics across transfers. For τ, the 25 nearest neighbors served as positives and neighbors ranked 50–75 as negatives for each anchor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Citation</h2>
+      
+      <pre><code>@inproceedings{ma2025artfm,
+      title={Stochastic Interpolants for Revealing Stylistic Flows across the History of Art}, 
+      author={Pingchuan Ma and Ming Gui and Johannes Schusterbauer and Xiaopei Yang and Olga Grebenkova and Vincent Tao Hu and Bj{\"o}rn Ommer},
+      booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+      year={2025}
+    }</code></pre>
+    </div>
+    <div class="container is-max-desktop content">
+      <h2 class="title">Check out other works from our group at ICCV 2025:</h2>
+      <ol>
+        <li>
+          <a href="https://compvis.github.io/SCFlow/" target="_blank" rel="noopener noreferrer">
+            SCFlow: Implicitly Learning Style and Content Disentanglement with Flow Models
+          </a>
+        </li>
+        <li>
+          <a href="https://compvis.github.io/flow-poke-transformer/" target="_blank" rel="noopener noreferrer">
+            What If: Understanding Motion Through Sparse Interactions
+          </a>
+        </li>
+        <li>
+          <a href="https://compvis.github.io/tread/" target="_blank" rel="noopener noreferrer">
+            Tread: Token Routing for Efficient Architecture-agnostic Diffusion Training
+          </a>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+              target="_blank">Academic Project Page Template</a> which was adopted from the <a
+              href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the
+            footer. <br> This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

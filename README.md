@@ -14,6 +14,9 @@
 </div>
 <!-- <a href=""><img src="https://img.shields.io/badge/arXiv-PDF-b31b1b" alt="Paper"></a> -->
 
+<a href="https://compvis.github.io/Art-fm/"><img src="docs/static/figures/badge-website.svg" alt="Website"></a>
+
+
 ## 🔥 TL;DR
 
 We introduce a generative framework that models the temporal evolution of artistic styles as an optimal transport problem in a learned style space.
@@ -57,6 +60,9 @@ WIP
 If you use our work in your research, please use the following BibTeX entry
 
 ```bibtex
-@InProceedings{
-    TODO
-}
+@inproceedings{ma2025artfm,
+      title={Stochastic Interpolants for Revealing Stylistic Flows across the History of Art}, 
+      author={Pingchuan Ma and Ming Gui and Johannes Schusterbauer and Xiaopei Yang and Olga Grebenkova and Vincent Tao Hu and Bj{\"o}rn Ommer},
+      booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+      year={2025}
+    }
