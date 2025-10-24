@@ -12,8 +12,7 @@
 
 <p align="center"><strong>📄 ICCV 2025</strong></p>
 </div>
-<!-- <a href=""><img src="https://img.shields.io/badge/arXiv-PDF-b31b1b" alt="Paper"></a> -->
-
+<a href="https://openaccess.thecvf.com/content/ICCV2025/html/Ma_Stochastic_Interpolants_for_Revealing_Stylistic_Flows_across_the_History_of_ICCV_2025_paper.html"><img src="https://img.shields.io/badge/arXiv-PDF-b31b1b" alt="Paper"></a>
 <a href="https://compvis.github.io/Art-fm/"><img src="docs/static/figures/badge-website.svg" alt="Website"></a>
 
 
@@ -60,9 +59,12 @@ WIP
 If you use our work in your research, please use the following BibTeX entry
 
 ```bibtex
-@inproceedings{ma2025artfm,
-      title={Stochastic Interpolants for Revealing Stylistic Flows across the History of Art}, 
-      author={Pingchuan Ma and Ming Gui and Johannes Schusterbauer and Xiaopei Yang and Olga Grebenkova and Vincent Tao Hu and Bj{\"o}rn Ommer},
-      booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-      year={2025}
-    }
+@InProceedings{Ma_2025_ICCV,
+    author    = {Ma, Pingchuan and Gui, Ming and Schusterbauer, Johannes and Yang, Xiaopei and Grebenkova, Olga and Hu, Vincent Tao and Ommer, Bj\"orn},
+    title     = {Stochastic Interpolants for Revealing Stylistic Flows across the History of Art},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2025},
+    pages     = {5867-5878}
+  }
+```
