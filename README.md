@@ -59,7 +59,7 @@ WIP
 If you use our work in your research, please use the following BibTeX entry
 
 ```bibtex
-@InProceedings{Ma_2025_ICCV,
+@InProceedings{Ma_2025_artfm,
     author    = {Ma, Pingchuan and Gui, Ming and Schusterbauer, Johannes and Yang, Xiaopei and Grebenkova, Olga and Hu, Vincent Tao and Ommer, Bj\"orn},
     title     = {Stochastic Interpolants for Revealing Stylistic Flows across the History of Art},
     booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
